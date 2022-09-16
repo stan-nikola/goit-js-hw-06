@@ -3,24 +3,24 @@ const refs = {
   outputText: document.querySelector("#name-output"),
 };
 
-refs.input.addEventListener("input", outputTextChange);
+refs.input.addEventListener("input", onOutputTextChange);
 
 const DEFAULT_NAME = "Anonymous";
 
-function outputTextChange(event) {
+function onOutputTextChange(event) {
   if (event.currentTarget.value === "") {
     return (refs.outputText.textContent = DEFAULT_NAME);
   }
   refs.outputText.textContent = event.currentTarget.value;
 }
 
-// function outputTextChange(event) {
+// function onOutputTextChange(event) {
 //   event.currentTarget.value === ""
 //     ? (refs.outputText.textContent = DEFAULT_NAME)
 //     : (refs.outputText.textContent = event.currentTarget.value);
 // }
 
-// function outputTextChange(event) {
+// function onOutputTextChange(event) {
 //   if (event.currentTarget.value === "") {
 //     refs.outputText.textContent = DEFAULT_NAME;
 //   } else {
