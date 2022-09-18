@@ -10,48 +10,31 @@ const refs = {
   destroy: controls.lastElementChild,
 };
 
-refs.input.addEventListener("blur", createBoxes);
+refs.input.addEventListener("blur", () => {
+  return refs.input.value;
+});
+
 refs.destroy.addEventListener("click", destroyBoxes);
+refs.create.addEventListener("click", createBoxes);
 
-function createBoxes(amount) {
+let boxEl;
+function createBoxes() {
   let startSize = 30;
-  for (let i = 0; i < amount.currentTarget.value; i += 1) {
-    const boxEl = document.createElement("div");
-    refs.create.addEventListener("click", () => {
-      boxContainer.appendChild(boxEl);
-      boxEl.style.backgroundColor += getRandomHexColor();
-      startSize += 10;
+  for (let i = 0; i < refs.input.value; i += 1) {
+    boxEl = document.createElement("div");
+    boxContainer.appendChild(boxEl);
 
-      boxEl.style.width = `${startSize}px`;
-      boxEl.style.height = `${startSize}px`;
+    boxEl.style.backgroundColor += getRandomHexColor();
+    startSize += 10;
 
-      console.log();
-    });
+    boxEl.style.width = `${startSize}px`;
+    boxEl.style.height = `${startSize}px`;
   }
+
+  console.log(boxEl);
+  console.log(refs.input.value);
 }
 
 function destroyBoxes() {
-  boxContainer.remove();
+  boxContainer.innerHTML = "";
 }
-
-console.log(boxContainer);
-
-// refs.create.addEventListener("click", createBoxes);
-// refs.destroy.addEventListener("click", destroyBoxes);
-
-// function createBoxes(amount) {
-//   let startSize = 30;
-//   for (let i = 0; i < amount.currentTarget.value; i += 1) {
-//     const boxEl = document.createElement("div");
-//     boxContainer.appendChild(boxEl);
-//     boxEl.style.backgroundColor += getRandomHexColor();
-//     startSize += 10;
-
-//     boxEl.style.width = `${startSize}px`;
-//     boxEl.style.height = `${startSize}px`;
-//   }
-// }
-
-// function destroyBoxes() {
-//   boxContainer.remove();
-// }
