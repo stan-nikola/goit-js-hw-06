@@ -17,22 +17,18 @@ refs.input.addEventListener("blur", () => {
 refs.destroy.addEventListener("click", destroyBoxes);
 refs.create.addEventListener("click", createBoxes);
 
-let boxEl;
 function createBoxes() {
-  let startSize = 30;
+  let fragment = document.createDocumentFragment();
+
   for (let i = 0; i < refs.input.value; i += 1) {
-    boxEl = document.createElement("div");
-    boxContainer.appendChild(boxEl);
+    const boxEl = document.createElement("div");
 
     boxEl.style.backgroundColor += getRandomHexColor();
-    startSize += 10;
-
-    boxEl.style.width = `${startSize}px`;
-    boxEl.style.height = `${startSize}px`;
+    boxEl.style.width = 30 + i * 10 + "px";
+    boxEl.style.height = 30 + i * 10 + "px";
+    fragment.appendChild(boxEl);
   }
-
-  console.log(boxEl);
-  console.log(refs.input.value);
+  boxContainer.appendChild(fragment);
 }
 
 function destroyBoxes() {
