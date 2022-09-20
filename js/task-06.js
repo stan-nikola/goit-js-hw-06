@@ -3,16 +3,15 @@ const inputCheck = document.querySelector("#validation-input");
 inputCheck.addEventListener("blur", onInputSymbolCheck);
 
 // const MIN_SYMBOLS = inputCheck.attributes[2].value;
-const MIN_SYMBOLS = inputCheck.dataset.length;
+const SYMBOLS_LENGTH = Number(inputCheck.dataset.length);
 
 function onInputSymbolCheck(event) {
   //   console.log(event.currentTarget.value.length);
-  inputCheck.classList.add("invalid");
 
-  if (event.currentTarget.value.length >= MIN_SYMBOLS) {
+  if (event.currentTarget.value.length === SYMBOLS_LENGTH) {
     inputCheck.classList.remove("invalid");
     return inputCheck.classList.add("valid");
   }
+  inputCheck.classList.remove("valid");
+  inputCheck.classList.add("invalid");
 }
-
-console.log(MIN_SYMBOLS);

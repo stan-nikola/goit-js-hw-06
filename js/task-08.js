@@ -13,8 +13,13 @@ function onFormSubmit(event) {
     return alert("Заполните все поля, ну... :)");
   }
 
-  console.log(`Email: ${email.value}, Password: ${password.value}`);
+  const formData = {
+    email: email.value,
+    password: password.value,
+  };
+
   event.currentTarget.reset();
+  console.log(formData);
 
   // ========================================================
   //   const formElements = event.currentTarget.elements;
